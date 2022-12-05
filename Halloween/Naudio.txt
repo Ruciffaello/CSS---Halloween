@@ -1,0 +1,29 @@
+//pictureBox1.Image = i;
+
+            /*var player = new WaveOut();
+            var file = new AudioFileReader(@"C:\Users\pkpk1\Desktop\CSS\Halloween1\voice\accept.wav");
+            var meter = new MeteringSampleProvider(file);
+            meter.StreamVolume += (s, a) => Console.WriteLine("{0} - {1}", a.MaxSampleValues[0], a.MaxSampleValues[1]);
+            //meter.StreamVolume += (s, a) =>label1.Text = a.MaxSampleValues[0].ToString()+" "+ a.MaxSampleValues[1].ToString();
+
+            player.Init(new SampleToWaveProvider(meter));*/
+
+
+            /*float[] sts = new float[e.Buffer.Length / channels];
+            int outIndex = 0;
+            for (int n = 0; n < e.Buffer.Length; n += channels)
+            {
+                sts[outIndex++] = BitConverter.ToInt16(e.Buffer, n) / 32768f;
+            }
+
+            for (int n = 0; n < sts.Length; n += channels)
+            {
+                Add(sts[n]);
+            }*/
+
+
+/*var defaultDevice = devEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            var volume = defaultDevice.AudioEndpointVolume;
+            float leftVolumePercent = volume.Channels[0].VolumeLevelScalar * 100;
+            float rightVolumePercent = volume.Channels[1].VolumeLevelScalar * 100;
+            float masterVolumePercent = volume.MasterVolumeLevelScalar * 100;*/

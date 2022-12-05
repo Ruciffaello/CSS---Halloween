@@ -1,0 +1,51 @@
+遊戲聲音主要是使用NAudio提供的c#套件
+
+在form2
+
+private void Form2_Load(object sender, EventArgs e) 意思就是 當視窗載入的時候(也可以理解成視窗打開的時候)
+
+在打開的時候，我們就執行裡面的程式
+
+這行為NAudio建構程式
+
+MMDeviceEnumerator devEnum = new MMDeviceEnumerator();
+
+我們declare 一個名為 devEnum的 NAudio.CoreAudioApi.MMDeviceEnumerator的物件
+
+主要是收集這台機器上有關音訊相關有紀錄的設備
+
+下面這一行 是將根據我們括號理的條件，把符合的音訊設備列出來，並使用一個變數接起來
+
+var device = devEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+
+把得到的device轉成陣列，輸出到下拉選單中
+
+comboBox1.Items.AddRange(device.ToArray());
+
+理論上到這邊，應該就不會有問題了
+
+但是我們不是有遇到程式開了，卻無法存取聲音的問題
+
+因此，我用了一個小的第三方程式，讓程式可以套過另外一個方法開啟對聲音的連線
+
+var waveIn = new WaveIn();
+waveIn.StartRecording();
+
+
+form1
+
+[DllImport("winmm.dll", EntryPoint = "mciSendStringA", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
+private static extern int record(string lpstrCommand, string lpstrReturnString, int uReturnLength, int hwndCallback);
+
+這邊是當初第一次找的程式，但是沒法開啟量化功能所以放棄了。
+
+但是，這邊這個關於聲音的dll檔，是借用windows系統的內部功能
+
+希望可以藉由這功能，實現我們在控制台看到的音量測試的相關功能
+
+可惜失敗了....
+
+
+*程式碼中，因為我把位置給寫成靜態的了，所以程式會每次都去指定的位置讀取資料。
+只要看到這樣的程式，都是指定靜態位置讀取資料
+@"C:\Users\pkpk1\Desktop\CSS\Halloween1\images/Result page.png"
